@@ -1,0 +1,175 @@
+<body class="profile-page">
+<div class="wrapper">
+
+  <div class="header header-filter" style="background-image: url('../../../assets/img/kelumtimber.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row" >
+          <div class="profile">
+            <div class="name">
+              <h3 class="title">Add New Shipment</h3>
+            </div>
+            <form class="form-group">
+              <div class="form-group col-md-12">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <h4>Select Warehouse</h4>
+                  <select class="form-control" data-style="btn btn-link" align="center"
+                          id="exampleFormControlSelect1" name="warehouse" [(ngModel)]="warehouse" required="true">
+                    <option selected>Sujeewa</option>
+                    <option>Asala</option>
+                  </select>
+                  <h4>Date</h4>
+                  <input type="date" class="form-control" name="date" [(ngModel)]="date" />
+                  <div class="form-group">
+                  <h4>Buyer</h4>
+                    <select class="form-control" data-style="btn btn-link" align="center"
+                            id="exampleFormControlSelect4" name="warehouse" [(ngModel)]="buyer" required="true">
+                      <option selected>Diamond</option>
+                      <option>Crystal</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+            <div class="row col-md-6">
+              <div class="col-sm-12 col-md-12">
+                  <br>
+                  <h4>Timber name</h4>
+                  <select class="form-control selectpicker" data-style="btn btn-link" align="center"
+                        id="exampleFormControlSelect" required="true" name="name" [(ngModel)]="name">
+                    <option></option>
+                  <option *ngFor="let nam of data.timbernames.sort()">{{nam}}</option>
+                  </select>
+                  <!--<input  placeholder="Enter Timber name" class="form-control" required="true" name="name" [(ngModel)]="name"/>-->
+                  <br>
+                  <h4>Bundle Number</h4>
+                  <input class="form-control" placeholder="Please enter the bundle number"  required="true"
+                            name="bundlenum" [(ngModel)]="bundlenum"/>
+                  <br>
+                  <h4>Bundle Details</h4>
+                <form>
+                  <div>
+                    <div class="col-md-3">
+                      <h6>Cross Section Area</h6>
+                      <select class="form-control selectpicker" data-style="btn btn-link" align="center"
+                              id="exampleFormControlSelect2" name="crosssection" [(ngModel)]="crosssection" required="true">
+                        <option *ngFor="let cross of data.crosssections.sort()">{{cross}}</option>
+                      </select>
+                      <br>
+                    </div>
+                    <div class="col-md-3">
+                      <h6>Piece Length</h6>
+                      <input  placeholder="Length" class="form-control" required="true" name="piecelength" [(ngModel)]="piecelength"/>
+                    </div>
+                    <div class="col-md-3">
+                      <h6>Number of Pieces</h6>
+                      <input  placeholder="Number of pieces" class="form-control" required="true" name="pieces" [(ngModel)]="pieces"/>
+                    </div>
+                    <div class="col-md-3">
+                      <h6>Unit Price</h6>
+                      <input  placeholder="Unit Price" class="form-control" required="true" name="unitprice" [(ngModel)]="unitprice"/>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <button class="btn btn-default btn-primary" (click)="addDetails()" type="submit">Add</button>
+                    </div>
+                    <br/>
+                  </div>
+                </form>
+
+
+                  <div class="row">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>Cross Section</th>
+                        <th>Length</th>
+                        <th>Unit price</th>
+                        <th>Pieces</th>
+                        <th class="text-right">Price</th>
+                        <th class="text-right">Actions</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let timber of timbers">
+                          <td>{{timber.crosssection}}</td>
+                          <td>{{timber.piecelength}}</td>
+                          <td>{{timber.unitprice}}</td>
+                          <td>{{timber.pieces}}</td>
+                          <td class="text-right">{{timber.price}}</td>
+                          <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-round" (click)="removeTimber(timber)">
+                              <i class="material-icons">close</i>
+                            </button>
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <br>
+                  <button class="btn btn-primary btn-lg" (click)="addBundle()">Add Bundle</button>
+                  <br>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4>Shipment details</h4>
+              <div>
+                <h4>Total Pieces in Shipment : {{shipmentPieces}}</h4>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>Timber Name</th>
+                    <th>Bundle Number</th>
+                    <th>Pieces</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let bundle of bundles.reverse()">
+                    <td>{{bundle.timbername}}</td>
+                    <td>{{bundle.bundlenum}}</td>
+                    <td>{{bundle.piecesBundle}}</td>
+                    <td class="text-right">{{bundle.price}}</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" class="btn btn-danger btn-round" (click)="removeBundle(bundle)">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+              <div class="row">
+                <button  class="btn btn-primary" (click)="saveShipment()">Save Shipment</button>
+                <button class="btn btn-danger" (click)="cancelShipment()">Cancel</button>
+                <!--a href="javascript:window.print();">Print details</a-->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body>
+<app-footer></app-footer>
+
+
+

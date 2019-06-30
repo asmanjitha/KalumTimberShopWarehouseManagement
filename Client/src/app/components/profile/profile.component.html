@@ -1,0 +1,147 @@
+
+<body class="profile-page">
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('http://fitphysio.com.au/wp-content/uploads/2015/06/slider03-1440x511.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <form class="form-group">
+          <div class="profile">
+            <div class="avatar">
+              <img src={{this.user.img}} alt="Circle Image" class="img-circle img-responsive img-raised">
+              <button class="btn btn-simple btn-primary btn-sm" (click)="showImg()">Edit</button>
+              <div class="col-md-12" id="imgdiv">
+                <input class="form-control" value={{this.user.img}} id="myimg">
+                <button class="btn-primary btn-simple btn" id="imgbtn" (click)="editImg()">done</button>
+              </div>
+            </div>
+            <div class="name">
+              <h3 class="title">{{this.user.name}}</h3>
+
+              <h6>{{this.user.occupation}} <button class="btn btn-simple btn-primary btn-sm" (click)="showOccupation()">Edit</button></h6>
+              <div class="col-md-12" id="occupationdiv">
+                <input class="form-control" value={{this.user.occupation}} id="myoccupation">
+                <button class="btn-primary btn-simple btn" id="occupationbtn" (click)="editOccupation()">done</button>
+              </div>
+
+              <input type="hidden" id="id" value={{this.user._id}}>
+            </div>
+            <br>
+            <div class="name">
+              <p>Country: {{this.user.country}} <button class="btn btn-simple btn-primary btn-sm" (click)="showCountry()">Edit</button></p>
+              <div class="col-md-12" id="countrydiv">
+                <input class="form-control" value={{this.user.country}} id="mycountry">
+                <button class="btn-primary btn-simple btn" id="countrybtn" (click)="editCountry()">done</button>
+              </div>
+
+              <p>City: {{this.user.city}}  <button class="btn btn-simple btn-primary btn-sm" (click)="showCity()">Edit</button></p>
+              <div class="col-md-12" id="citydiv">
+                <input class="form-control" value={{this.user.city}} id="mycity">
+                <button class="btn-primary btn-simple btn" id="citybtn" (click)="editCity()">done</button>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+
+        <div>
+          <div class="col-md-12 ">
+            <form class="form-group">
+            <div class="profile-tabs" align="center">
+              <h5 >Email : {{this.user.email}} <button class="btn btn-simple btn-primary btn-sm" (click)="showEmail()">Edit</button></h5>
+              <div class="col-md-12" id="emaildiv">
+                <input class="form-control" value={{this.user.email}} id="myemail" type="email">
+                <button class="btn-primary btn-simple btn" id="emailbtn" (click)="editEmail()">done</button>
+              </div>
+
+              <p> User Name: {{this.user.username}} <button class="btn btn-simple btn-primary btn-sm" (click)="showUsername()">Edit</button></p>
+              <div class="col-md-12" id="usernamediv">
+                <input class="form-control" value={{this.user.username}} id="myusername" >
+                <button class="btn-primary btn-simple btn" id="usernamebtn" (click)="editUsername()">done</button>
+              </div>
+
+              <p>Weight: {{this.user.weight}}Kg <button class="btn btn-simple btn-primary btn-sm" (click)="showWeight()">Edit</button></p>
+              <div class="col-md-12" id="weightdiv">
+                <input class="form-control" value={{this.user.weight}} id="myweight" >
+                <button class="btn-primary btn-simple btn" id="weightbtn" (click)="editWeight()">done</button>
+              </div>
+
+              <p>Height: {{this.user.height}}m <button class="btn btn-simple btn-primary btn-sm" (click)="showHeight()">Edit</button></p>
+              <div class="col-md-12" id="heightdiv">
+                <input class="form-control" value={{this.user.height}} id="myheight" >
+                <button class="btn-primary btn-simple btn" id="heightbtn" (click)="editHeight()">done</button>
+              </div>
+
+              <p><b>BMI(Body Mass Index): {{this.user.weight/(this.user.height*this.user.height) | number:'2.1-3'}}</b></p>
+
+              <p>Allergies: <button class="btn btn-simple btn-primary btn-sm" (click)="showAllergies()">Edit</button></p>
+              <div class="col-md-12" id="allergiesdiv">
+                <input class="form-control" value={{this.user.allergies}} id="myallergies" >
+                <button class="btn-primary btn-simple btn" id="allergiesbtn" (click)="editAllergies()">done</button>
+              </div>
+              <div *ngFor="let i of this.user.allergies">
+                <p>{{i}}</p><br>
+              </div>
+
+              <p>Health Conditions: <button class="btn btn-simple btn-primary btn-sm" (click)="showHealth()">Edit</button></p>
+              <div class="col-md-12" id="healthdiv">
+                <input class="form-control" value={{this.user.healthconditions}} id="myhealth" >
+                <button class="btn-primary btn-simple btn" id="healthbtn" (click)="editHealth()">done</button>
+              </div>
+              <div *ngFor="let i of this.user.healthconditions">
+                <p>{{i}}</p><br>
+              </div>
+
+              <div class="nav-align-center">
+
+                <div class="tab-content gallery">
+                  <div class="tab-pane active" id="studio">
+                    <div class="row">
+                      <div class="col-md-12" align="center">
+                        <button class="btn btn-simple btn-primary btn-lg" (click)="updatefinal()">Update Profile</button>
+                        <br>
+                        <button class="btn btn-simple btn-danger btn-lg" (click)="goback()">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                    <div>
+                      <h3><b>My Recipes</b> <button class="btn btn-simple btn-success btn-lg" (click)="addRecipeNav()">Add New Recipe</button></h3>
+                      <div class=" gallery">
+                        <div >
+                          <h4 align="center">{{this.msg}}</h4>
+                        </div>
+                        <div class="tab-pane active" id="studio2" *ngFor="let i of this.lis">
+                          <div class="col-sm-4">
+                            <app-editrecipecard [Recipe]="i" ></app-editrecipecard>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!-- End Profile Tabs -->
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <!-- End Profile Tabs -->
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+<app-footer></app-footer>

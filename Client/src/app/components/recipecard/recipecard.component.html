@@ -1,0 +1,20 @@
+<div class="card card-nav-tabs" style="background-color: #f8f1f5">
+  <div class="header" style="background-color: #fff8fc;
+  background-size: cover">
+    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+    <img class="img-src" src="{{Recipe.img}}" height="100%" width="100%">
+  </div>
+  <div class="content">
+    <h3 class="header-danger text-center">{{Recipe.name}}</h3>
+    <div class="tab-content text-center">
+      <div class="tab-pane active">
+        <p>{{Recipe.description}} </p>
+      </div>
+      <div>
+        <neutron-rating [rating]="Recipe.rating" [starColour]="'#FDD835'" [readOnly]="true" [starSize]="2"></neutron-rating>
+        <a [routerLink] = "['/recipe',Recipe._id]"><button class="btn btn-simple btn-primary btn-lg">View Recipe</button></a>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+
+<body class="profile-page">
+
+<div class="wrapper">
+  <div class="header header-filter" >
+    <img src="{{this.recipe.img}}" width="100%" height="700">
+  </div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <form class="form-group">
+          <div class="row">
+            <div class="profile">
+              <div class="name">
+                <h3 class="title">{{this.recipe.name}}</h3>
+                <h4>Added by <b>{{this.recipe.author}}</b></h4>
+                <h4>ID: {{this.recipe._id}}</h4>
+              </div>
+            </div>
+          </div>
+          <div class="description text-center">
+            <p>{{this.recipe.description}}</p>
+            <p>{{this.recipe.date}}</p>
+          </div>
+          <div class="row">
+            <div class="col-md-12 ">
+              <div class="profile-tabs">
+                <div class="name" align="center">
+                  <h3 class="title">Ingredients</h3>
+                  <div *ngFor="let i of this.recipe.ingredients">
+                    <p>{{i}}</p><br>
+                  </div>
+                </div>
+
+                <div class="name" align="center">
+                  <h3 class="title">Health Conditions</h3>
+                  <div *ngFor="let i of this.recipe.health">
+                    <p>{{i}}</p><br>
+                  </div>
+                </div>
+
+                <div class="name" align="center">
+                  <h3 class="title">Occasions </h3>
+                  <div *ngFor="let i of this.recipe.occasion">
+                    <p>{{i}}</p><br>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End Profile Tabs -->
+            </div>
+            <div class="name" align="center">
+              <h3 class="title">Method </h3>
+              <p>{{this.recipe.method}}</p>
+            </div>
+            <div align="center">
+              <button class="btn btn-simple btn-success btn-lg" (click)="acceptRecipe()">Accept This Recipe</button>
+              <button class="btn btn-simple btn-danger btn-lg" (click)="declineRecipe()">Decline This Recipe</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+<app-footer></app-footer>

@@ -1,0 +1,55 @@
+<app-navbaruser></app-navbaruser>
+<body class="profile-page">
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('http://fitphysio.com.au/wp-content/uploads/2015/06/slider03-1440x511.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+            <div class="profile-tabs" align="center">
+              <div class="nav-align-center">
+                <h3><b>Update System Data</b></h3>
+                <form>
+                  <div class="form-group col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <h4 class="text-center">Add new Timber Name</h4>
+                      <div id="timbernumDiv">
+                        <input  placeholder="Enter Timber Name" class="form-control"  name="timbername" [(ngModel)]="timbername" id="timbername" />
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-primary btn-lg " (click)="saveName()"> Add Timber Name </button>
+                      </div>
+
+                      <h4 class="text-center">Add new Cross Section</h4>
+                      <div id="crosssectionDiv">
+                        <input  placeholder="Enter Cross Section" class="form-control"  name="crosssection" [(ngModel)]="crosssection" id="crosssection" />
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-primary btn-lg " (click)="saveCross()"> Add Cross Section </button>
+                      </div>
+
+                    </div>
+                    <div class="col-md-4"></div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <!-- End Profile Tabs -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+<app-footer></app-footer>
+

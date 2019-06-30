@@ -1,0 +1,96 @@
+
+<body class="profile-page">
+<div class="wrapper">
+
+  <div class="header header-filter" style="background-image: url('../../../assets/img/kelumtimber.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row" >
+          <div class="profile">
+            <div class="name">
+              <h3 class="title">Add New Arrival</h3>
+            </div>
+            <form class="form-group">
+              <div class="form-group col-md-12">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <h4>Date</h4>
+                  <input type="date" class="form-control" name="date" [(ngModel)]="date" />
+
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+              <div class="row col-md-6">
+                <div class="col-sm-12 col-md-12">
+
+                  <h4>Bundle Number</h4>
+                  <input class="form-control" placeholder="Please enter the bundle number"  required="true"
+                         name="bundlenum" [(ngModel)]="bundlenum"/>
+                  <br>
+                  <div class="col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <button class="btn btn-default btn-primary" (click)="addBundle(this.bundlenum)">Add</button>
+                    </div>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h4>Arrival details</h4>
+                <div>
+                  <h4>Total Pieces in Arrival : {{arrivalPieces}}</h4>
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Bundle Number</th>
+                      <th>Timber Name</th>
+                      <th>Purchase Date</th>
+                      <th>Pieces</th>
+                      <th class="text-right">Price</th>
+                      <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let bundle of bundles.reverse()">
+                      <td>{{bundle.bundleNumber}}</td>
+                      <td>{{bundle.timberName}}</td>
+                      <td>{{bundle.purchaseDate.toString().substr(0,10)}}</td>
+                      <td>{{bundle.totalPieces}}</td>
+                      <td class="text-right">{{bundle.totalPrice}}</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" (click)="removeBundle(bundle)">
+                          <i class="material-icons">close</i>
+                        </button>
+
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+              <div class="row">
+                <button  class="btn btn-primary" (click)="saveArrival()">Save Shipment</button>
+                <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+                <!--a href="javascript:window.print();">Print details</a-->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body>
+<app-footer></app-footer>
+
+
+

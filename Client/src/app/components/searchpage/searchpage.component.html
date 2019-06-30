@@ -1,0 +1,136 @@
+<body class="profile-page">
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('../../../assets/img/warehouse.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="profile">
+            <div class="name">
+              <h3 class="title">Search Bundle</h3>
+            </div>
+          </div>
+        </div>
+        <form>
+          <div class="form-group col-md-12">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h4 class="text-center">Select Search Option</h4>
+              <select class="form-control" data-style="btn btn-link" align="center"
+                      id="exampleFormControlSelect1" name="warehouse" [(ngModel)]="option" required="true" (change)="this.showItem()">
+                <option selected>Bundle Number</option>
+                <option>Warehouse</option>
+              </select>
+              <div id="bundlenumDiv">
+                <input  placeholder="Enter Bundle Number" class="form-control"  name="bundlenum" [(ngModel)]="bundlenum" id="bundlenum" />
+              </div>
+
+              <div id="dateDiv" >
+                <h4 class="text-center">Select Ware House</h4>
+                <select class="form-control" data-style="btn btn-link" align="center"
+                        id="exampleFormControlSelect" name="warehouse" [(ngModel)]="warehouse"  (change)="this.showItem()">
+                  <option selected>Crystal</option>
+                  <option>Diamond</option>
+                </select>
+                <h4 class="text-center">From</h4>
+                <input type="date" class="form-control" name="datefrom" [(ngModel)]="datefrom" />
+                <h4 class="text-center">To</h4>
+                <input type="date" class="form-control" name="dateto" [(ngModel)]="dateto" />
+              </div>
+
+              <div class="text-center">
+                <button class="btn btn-primary btn-lg " (click)="searchBundle()"> Search </button>
+              </div>
+
+
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </form>
+
+        <div class="row">
+
+              <div id="table" style="display: none">
+
+                <table  class="row-border hover table">
+
+                  <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Timber Name</th>
+                    <th class="text-center">Bundle Number</th>
+                    <th class="text-center">State</th>
+                    <th class="text-center">Purchase Date</th>
+                    <th class="text-center">Arrival Date</th>
+                    <th class="text-center">Warehouse</th>
+                    <th class="text-center">Buyer</th>
+                    <th class="text-center">Bundle Price(MYR)</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let bundle of bundles">
+                    <td class="text-center"></td>
+                    <td class="text-center">{{bundle.timberName}}</td>
+                    <td class="text-center">{{bundle.bundleNumber}}</td>
+                    <td class="text-center">{{bundle.deleted ? "Received" : "Available"}}</td>
+                    <td class="text-center">{{bundle.purchaseDate.toString().substring(0,10)}}</td>
+                    <td class="text-center">{{bundle.deleted? bundle.arrivalDate.toString().substring(0,10) : "--" }}</td>
+                    <td class="text-center">{{bundle.warehouse}}</td>
+                    <td class="text-center">{{bundle.buyer}}</td>
+                    <td class="text-center">{{bundle.totalPrice}}</td>
+                    <td class="td-actions text-center" >
+                      <button type="button"  class="btn btn-success btn-round"  title="View Bundle Details" (click)=showRate(bundle)>
+                        <i class="material-icons">notes</i>
+                      </button>
+                    </td>
+                    <div class="col-md-12" id={{bundle.bundleNumber}} style="display: none" >
+                      <h3 class="text-center">Bundle Details</h3>
+                      <div class="row">
+                        <table
+
+                          class="table">
+                          <thead>
+                          <tr>
+                            <th class="text-center">Cross Section</th>
+                            <th class="text-center">Length</th>
+                            <th class="text-center">Pieces</th>
+                            <th class="text-center">Unit price(MYR)</th>
+                            <th class="text-center">Price(MYR)</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let timb of bundle.timber">
+                            <td class="text-center">{{timb.crosssection}}</td>
+                            <td class="text-center">{{timb.piecelength}}</td>
+                            <td class="text-center">{{timb.pieces}}</td>
+                            <td class="text-center">{{timb.unitprice}}</td>
+                            <td class="text-center">{{timb.price}}</td>
+                          </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-5"></div>
+                      <button class="btn-danger btn btn-round" id="cancelratebtn" (click)="closeRate(bundle)">Close</button>
+                    </div>
+                  </tr>
+                  </tbody>
+                </table>
+            <!-- End Profile Tabs -->
+              </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body>
+<app-footer></app-footer>

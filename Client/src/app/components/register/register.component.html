@@ -1,0 +1,74 @@
+<body class="signup-page">
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('https://i.pinimg.com/originals/b6/6d/2a/b66d2af3d2920db5676a2839b4cc9205.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+          <div class="card card-signup">
+            <form class="form" >
+              <div class="header header-danger text-center">
+                <h4>Sign Up</h4>
+                <div class="social-line">
+                  <a href="#facebook" class="btn btn-simple btn-just-icon">
+                    <i class="fa fa-facebook-square"></i>
+                  </a>
+                  <a href="#twitter" class="btn btn-simple btn-just-icon">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#g+" class="btn btn-simple btn-just-icon">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </div>
+              </div>
+              <p class="text-divider">Or Be Classical</p>
+              <div class="content">
+                <div class="input-group label-floating has-error">
+                        <span class="input-group-addon">
+                          <i class="material-icons">face</i>
+                        </span>
+                  <input type="text" placeholder="Name..." class="form-control" name="Name" id="Name" [(ngModel)]="name"/>
+                </div><div class="input-group label-floating has-error">
+                        <span class="input-group-addon">
+                          <i class="material-icons">account_circle</i>
+                        </span>
+                <input  placeholder="User Name..." class="form-control" name="username" id="username" [(ngModel)]="username"/>
+              </div>
+
+
+                <div class="input-group label-floating has-error">
+                        <span class="input-group-addon">
+                          <i class="material-icons">email</i>
+                        </span>
+                  <input type="email" class="form-control"  placeholder="Email..." name="email" id="email" [(ngModel)]="email"/>
+                </div>
+
+                <div class="input-group label-floating has-error">
+                        <span class="input-group-addon">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                  <input type="password" placeholder="Password..." class="form-control" name="password" id="password" [(ngModel)]="password"/>
+                </div>
+
+                <!-- If you want to add a checkbox to this form, uncomment this code
+
+                                  <div class="checkbox">
+                                      <label>
+                                          <input type="checkbox" name="optionsCheckboxes" checked>
+                                          Subscribe to newsletter
+                                      </label>
+                                  </div> -->
+              </div>
+              <div class="footer text-center">
+                <button class="btn btn-simple btn-primary btn-lg" (click)="validateData()">Get Started</button>
+                <p class="text-divider">Already have an account?</p>
+                <a [routerLink] = "['/login']" class="btn btn-simple btn-primary btn-lg">Log In</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<app-footer></app-footer>

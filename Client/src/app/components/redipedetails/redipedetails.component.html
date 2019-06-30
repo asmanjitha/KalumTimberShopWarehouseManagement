@@ -1,0 +1,97 @@
+<body class="profile-page">
+<div class="wrapper">
+  <div class="header header-filter" style="background-image: url('../../../assets/img/warehouse.jpg'); width:100%;  "></div>
+
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="profile">
+            <div class="warehouse">
+              <h2 class="title">Warehouse : {{warehouse.warehouse.toUpperCase()}}</h2>
+              <h3 class="title">Total Number Of Bundles : {{bundles.length}}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div>
+              <table   class="row-border hover table">
+
+                <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th class="text-center">Timber Name</th>
+                  <th class="text-center">Bundle Number</th>
+                  <th class="text-center">Purchase Date</th>
+                  <th class="text-center">Number of Pieces</th>
+                  <th class="text-center">Buyer</th>
+                  <th class="text-center">Bundle Price(MYR)</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let bundle of bundles">
+                  <td class="text-center"></td>
+                  <td class="text-center">{{bundle.timberName}}</td>
+                  <td class="text-center">{{bundle.bundleNumber}}</td>
+                  <td class="text-center">{{bundle.purchaseDate.toString().substr(0,10)}}</td>
+                  <td class="text-center">{{bundle.totalPieces}}</td>
+                  <td class="text-center">{{bundle.buyer}}</td>
+                  <td class="text-center">{{bundle.totalPrice}}</td>
+                  <td class="td-actions text-center" >
+                    <button type="button"  class="btn btn-success btn-round"  title="View Bundle Details" (click)=showRate(bundle)>
+                      <i class="material-icons">notes</i>
+                    </button>
+                  </td>
+                  <div class="col-md-12" id={{bundle.bundleNumber}} style="display: none" >
+                    <h3 class="text-center">Bundle Details</h3>
+                    <div class="row">
+                      <table  class="table">
+                        <thead>
+                        <tr>
+                          <th class="text-center">Cross Section</th>
+                          <th class="text-center">Length</th>
+                          <th class="text-center">Pieces</th>
+                          <th class="text-center">Unit price(MYR)</th>
+                          <th class="text-center">Price(MYR)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let timb of bundle.timber">
+                          <td class="text-center">{{timb.crosssection}}</td>
+                          <td class="text-center">{{timb.piecelength}}</td>
+                          <td class="text-center">{{timb.pieces}}</td>
+                          <td class="text-center">{{timb.unitprice}}</td>
+                          <td class="text-center">{{timb.price}}</td>
+                        </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <button class="btn-danger btn btn-round" id="cancelratebtn" (click)="closeRate(bundle)">Close</button>
+                  </div>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- End Profile Tabs -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+<app-footer></app-footer>
